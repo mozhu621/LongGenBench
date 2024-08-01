@@ -15,15 +15,14 @@ def load_inputs(filename: str) -> list:
     """Load input data from a JSON file."""
     with open(filename, 'r', encoding='utf-8') as f:
         data = json.load(f)
-    return data['inputs']
-
+    return data
 def process_and_save_results(inputs: list, results: list, filename: str) -> None:
     """Combine inputs and results and save to a JSON file."""
     combined = []
     for input_data, result_blocks in zip(inputs, results):
         combined.append({
-            "id": input_data["id"],
-            "input": input_data["content"],
+            #"id": input_data["id"],
+            "input": input_data["prompt"],
             "output_blocks": result_blocks
         })
     save_to_json(combined, filename)
@@ -35,21 +34,22 @@ def main():
         return
 
     client = Together(api_key=api_key)
-    input_file = 'inputs.json'
+    input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/prompts_weekly_diary.json'
     inputs = load_inputs(input_file)
     
     results = []
     for input_data in inputs:
+        print(input_data['prompt'])
         stream = client.chat.completions.create(
             model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
-            messages=[{"role": "user", "content": input_data["content"]}],
-            max_tokens=8072,
+            messages=[{"role": "user", "content": input_data['prompt']}],
+            max_tokens=2000,
             temperature=0.7,
             top_p=0.7,
             top_k=50,
             repetition_penalty=1,
-            stop=[""],
-            stream=True,
+            stop=["<|eot_id|>"],
+            stream=True
         )
         
         output = ""
