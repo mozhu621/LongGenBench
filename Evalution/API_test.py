@@ -1,24 +1,69 @@
 import os
+import json
 from together import Together
 
-client = Together(api_key=os.environ.get("TOGETHER_API_KEY"))
+def process_output(output: str) -> list:
+    """Process the output to divide it into blocks using '###' as a delimiter."""
+    return output.split('###')
 
-stream = client.chat.completions.create(
-  model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
-  messages=[{"role": "user", "content": """Olivia is a economist. He likes to keep a weekly journal, documenting: 
-             1) Family life with: husband(yourself) (birthday on November 21), wife (birthday on June 24), child_1:daughter (birthday on August 19), father (birthday on August 18), mother (birthday on June 07). 
-             2) Participating in a pottery and ceramics workshop in Japan in week 40.
-             3) Join a weekend warriors’ adventure club every 4 weeks on weekends.
-             Generate a weekly diary for the year 2018, starting from January 1st, which is a Monday, marking the beginning of the first week of the year. Continue through to December 31st, which completes the 52nd week. Each diary entry should correspond to one week, resulting in a total of 52 entries. Each diary entry must consist of at least 150 words, thoroughly documenting personal experiences, thoughts, and significant events of the week. Conclude each entry with a brief reflection on the upcoming week, and separate each weekly diary entry with '###' to clearly demarcate the end of one week and the start of the next. Please ensure that there are no interruptions or omissions in the sequence of diary entries, providing a continuous narrative throughout the year.
-"""}],
-    max_tokens=8072,
-    temperature=0.7,
-    top_p=0.7,
-    top_k=50,
-    repetition_penalty=1,
-    stop=["<|eot_id|>"],
-    stream=True,
-)
+def save_to_json(data: list, filename: str) -> None:
+    """Save the processed data to a JSON file."""
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
 
-for chunk in stream:
-  print(chunk.choices[0].delta.content or "", end="", flush=True)
+def load_inputs(filename: str) -> list:
+    """Load input data from a JSON file."""
+    with open(filename, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    return data['inputs']
+
+def process_and_save_results(inputs: list, results: list, filename: str) -> None:
+    """Combine inputs and results and save to a JSON file."""
+    combined = []
+    for input_data, result_blocks in zip(inputs, results):
+        combined.append({
+            "id": input_data["id"],
+            "input": input_data["content"],
+            "output_blocks": result_blocks
+        })
+    save_to_json(combined, filename)
+
+def main():
+    api_key = os.environ.get("TOGETHER_API_KEY")
+    if not api_key:
+        print("API key for Together is not set in the environment variables.")
+        return
+
+    client = Together(api_key=api_key)
+    input_file = 'inputs.json'
+    inputs = load_inputs(input_file)
+    
+    results = []
+    for input_data in inputs:
+        stream = client.chat.completions.create(
+            model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+            messages=[{"role": "user", "content": input_data["content"]}],
+            max_tokens=8072,
+            temperature=0.7,
+            top_p=0.7,
+            top_k=50,
+            repetition_penalty=1,
+            stop=[""],
+            stream=True,
+        )
+        
+        output = ""
+        for chunk in stream:
+            content = chunk.choices[0].delta.content or ""
+            print(content, end="", flush=True)
+            output += content
+
+        output_blocks = process_output(output)
+        results.append(output_blocks)
+    
+    output_file = 'results.json'
+    process_and_save_results(inputs, results, output_file)
+    print("\n数据已保存到results.json文件中")
+
+if __name__ == "__main__":
+    main()
