@@ -28,6 +28,9 @@ def process_and_save_results(inputs: list, results: list, filename: str) -> None
         combined.append({
             #"id": input_data["id"],
             "input": input_data["prompt"],
+            "wweek_checks_once": input_data["week_checks_once"],
+            "week_checks_range": input_data["week_checks_range"],
+            "week_checks_periodic": input_data["week_checks_periodic"],
             "output_blocks": result_blocks
         })
     save_to_json(combined, filename)
@@ -36,7 +39,7 @@ input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/prompts_weekly_diary.json
 inputs = load_inputs(input_file)
 
 #sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens = 8000, seed = 42,presence_penalty = 0.2,frequency_penalty=0.2)
-sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens = 32000, seed = 42)
+sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens = 8000, seed = 42)
 
 prompts =[]
 for input_data in inputs:
@@ -44,7 +47,7 @@ for input_data in inputs:
 
 # Create an LLM.
 start_time = time.time()
-llm = LLM(model="Qwen/Qwen2-7B-Instruct", tensor_parallel_size=2)
+llm = LLM(model="meta-llama/Meta-Llama-3.1-8B-Instruct", tensor_parallel_size=2)
 #llm = LLM(model="Qwen/Qwen2-7B-Instruct")
 # Generate texts from the prompts. The output is a list of RequestOutput objects
 # that contain the prompt, generated text, and other information.
