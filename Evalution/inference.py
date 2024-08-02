@@ -35,7 +35,8 @@ def process_and_save_results(inputs: list, results: list, filename: str) -> None
 input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/prompts_weekly_diary.json'
 inputs = load_inputs(input_file)
 
-sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens = 8000, seed = 42,presence_penalty = 0.2,frequency_penalty=0.2)
+#sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens = 8000, seed = 42,presence_penalty = 0.2,frequency_penalty=0.2)
+sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens = 32000, seed = 42)
 
 prompts =[]
 for input_data in inputs:
@@ -53,7 +54,8 @@ print(f"Inference time: {inference_time:.2f} seconds")
 # Print the outputs.
 results = []
 for output in outputs:
-    output_blocks = process_output(output)
+  
+    output_blocks = process_output(output.outputs[0].text)
     results.append(output_blocks)
 
 output_file = 'results.json'
