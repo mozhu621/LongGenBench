@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 定义 inference.py 需要的参数
-MODEL_TYPE="meta-llama/Meta-Llama-3.1-8B-Instruct"
+MODEL_TYPE="Qwen/Qwen2-7B-Instruct"
 MODEL_NAME=$(basename $MODEL_TYPE)
 MAX_LENGTH=16000
 NUM_GPUS=2
