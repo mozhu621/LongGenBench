@@ -1,0 +1,2 @@
+Model,Completion Rate,Accuracy Once,Accuracy Range,Accuracy Periodic,Average Accuracy
+Meta-Llama-3.1-8B-Instruct_maxlen8000,97.13,0.7117212249208026,0.7611275964391692,0.5966386554621849,0.6898291589407188

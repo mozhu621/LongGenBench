@@ -105,6 +105,8 @@ for data in datas:
     prompts_periodic.extend(p_periodic)
     identifiers_periodic.extend(ids_periodic)
     
+
+    
     # 计算完成度
     completion_rate += calculate_completion_rate(checks_block, data['number'])
 

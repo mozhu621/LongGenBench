@@ -37,6 +37,7 @@ def process_and_save_results(inputs: list, results: list, filename: str) -> None
             "checks_range": input_data["checks_range"],
             "checks_periodic": input_data["checks_periodic"],
             "type":input_data["type"],
+            "number":input_data['number'],
             "output_blocks": result_blocks
         })
     save_to_json(combined, filename)
