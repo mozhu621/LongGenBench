@@ -6,20 +6,27 @@ import torch
 import json
 
 # 读取JSON文件
+import json
+import re
+
+# 读取JSON文件
 def read_json(file_path):
     with open(file_path, 'r') as file:
         data = json.load(file)
     return data
 
 # 解析output_blocks中的周数
-def parse_weeks(output_blocks):
+
+def parse_weeks(output_blocks, type):
     week_to_block = {}
+    pattern = rf"{type} (\d+)"
     for block in output_blocks:
-        match = re.search(r"Week (\d+)", block)
+        match = re.search(pattern, block)
         if match:
             week_number = int(match.group(1))
             week_to_block[week_number] = block
     return week_to_block
+
 
 # 生成检查内容的prompt
 def create_prompts(week_checks, week_to_block):
@@ -38,12 +45,14 @@ prompts_once= []
 prompts_range = []
 prompts_periodic = []
 for data in datas:
-    week_to_block = parse_weeks(data['output_blocks'])
+    week_to_block = parse_weeks(data['output_blocks'], data['type'])
     # 生成once, range, periodic的prompts
-    
-    prompts_once.extend(create_prompts(data['wweek_checks_once'], week_to_block))
-    prompts_range.extend(create_prompts(data['week_checks_range'], week_to_block))
-    prompts_periodic.extend(create_prompts(data['week_checks_periodic'], week_to_block))
+    prompts_once.extend(create_prompts(data['checks_once'], week_to_block))
+    prompts_range.extend(create_prompts(data['checks_range'], week_to_block))
+    prompts_periodic.extend(create_prompts(data['checks_periodic'], week_to_block))
+
+
+
 
 # Define the sampling parameters
 sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=50, seed=42)
