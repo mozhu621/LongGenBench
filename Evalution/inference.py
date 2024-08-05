@@ -4,12 +4,13 @@ import json
 from vllm import LLM, SamplingParams
 import torch
 import os
-from eval import parse_blocks,create_prompts,evaluate_accuracy,save_accuracy_to_csv,calculate_completion_rate
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Run LLM with command line arguments.')
     parser.add_argument('--model', type=str, required=True, help='Model type to use.')
     parser.add_argument('--max_length', type=int, default=8000, help='Maximum length of generation.')
     parser.add_argument('--gpu', type=int, default=1, help='Number of GPUs to use.')
+    parser.add_argument('--output_file', type=str, default=1, help='output_file_path.')
     args = parser.parse_args()
 
     return args
