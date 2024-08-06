@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # 定义 inference.py 需要的参数
-MODEL_TYPE="meta-llama/Meta-Llama-3.1-8B-Instruct"
+MODEL_TYPE="meta-llama/Meta-Llama-3.1-70B-Instruct"
 MODEL_NAME=$(basename $MODEL_TYPE)
-MAX_LENGTH=16000
-NUM_GPUS=2
+MAX_LENGTH=800
+NUM_GPUS=8
 OUTPUT_DIR="./results"
 OUTPUT_FILE="${OUTPUT_DIR}/${MODEL_NAME}_maxlen${MAX_LENGTH}.json"
-export CUDA_VISIBLE_DEVICES=0,1
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 # 确保输出目录存在
 
 
@@ -18,3 +18,4 @@ CSV_PATH="/home/yuhao/THREADING-THE-NEEDLE/Evalution/results/accuracy_results.cs
 
 # 运行 eval.py
 python eval.py --data $OUTPUT_FILE --csv $CSV_PATH --gpu $NUM_GPUS
+
