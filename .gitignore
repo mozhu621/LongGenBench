@@ -1,4 +1,4 @@
-Dataset/prompts_weekly_diary.json
+3Dataset/prompts_weekly_diary.json
 Evalution/results.json
 Dataset/Dataset.json
 Dataset/prompts_building_diary.json
@@ -10,3 +10,4 @@ Dataset/prompts_diary.json
 Evalution/results/Meta-Llama-3.1-8B-Instruct_maxlen16000.json
 Evalution/results/Mistral-7B-Instruct-v0.3_maxlen16000.json
 Evalution/results/Qwen2-7B-Instruct_maxlen16000.json
+Evalution/results/gemma-2-9b_maxlen16000.json
