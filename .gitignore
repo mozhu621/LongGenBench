@@ -16,3 +16,4 @@ Evalution/results/gemma-2-9b_maxlen16000.json
 Evalution/results/accuracy_results.csv
 Evalution/results/FILM-7B_maxlen16000.json
 >>>>>>> 66ef726 (123)
+Evalution/api_test_qwen2_72B.json

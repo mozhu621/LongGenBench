@@ -1,15 +1,16 @@
 import argparse
 import time
 import json
-from vllm import LLM, SamplingParams
+
 import torch
 import os
+from together import Together
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Run LLM with command line arguments.')
     parser.add_argument('--model', type=str, required=True, help='Model type to use.')
     parser.add_argument('--max_length', type=int, default=8000, help='Maximum length of generation.')
-    parser.add_argument('--gpu', type=int, default=1, help='Number of GPUs to use.')
+    #parser.add_argument('--gpu', type=int, default=1, help='Number of GPUs to use.')
     parser.add_argument('--output_file', type=str, required=True, help='Output file path.')
     args = parser.parse_args()
     return args
@@ -29,9 +30,13 @@ def write_json(file_path, data):
         json.dump(data, file, indent=4)
 
 def save_to_json(data: list, filename: str) -> None:
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    directory = os.path.dirname(filename)
+    if not directory:  # Check if directory is empty
+        directory = '.'  # Set current directory if no directory is provided
+    os.makedirs(directory, exist_ok=True)
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
+
 
 def load_inputs(filename: str) -> list:
     with open(filename, 'r', encoding='utf-8') as f:
@@ -54,24 +59,53 @@ def process_and_save_results(inputs: list, results: list, filename: str) -> None
         })
     save_to_json(combined, filename)
 
+
+def inference_API(inputs, args):
+    api_key = os.environ.get("TOGETHER_API_KEY")
+    if not api_key:
+        print("API key for Together is not set in the environment variables.")
+        return []
+
+    client = Together(api_key=api_key)
+    results = []
+    for input_data in inputs:
+        # print(f"Generating for prompt: {input_data['prompt']}")
+        stream = client.chat.completions.create(
+            model=args.model,
+            messages=[{"role": "user", "content": input_data}],
+            max_tokens=args.max_length,
+            temperature=0.7,
+            top_p=0.7,
+            top_k=50,
+            repetition_penalty=1,
+            stop=["<|eot_id|>"],
+            stream=True
+        )
+        
+        output = ""
+        for chunk in stream:
+            content = chunk.choices[0].delta.content or ""
+            print(content, end="", flush=True)
+            output += content
+        
+        results.append(output)
+    return results
+
 args = parse_args()
 
 input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset.json'
 inputs = load_inputs(input_file)
 
-sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42, repetition_penalty = 1.2)
-
 prompts = [input_data['prompt'] for input_data in inputs]
 
 # Setting up the LLM with the specified number of GPUs and model
-llm = LLM(model=args.model, tensor_parallel_size=args.gpu)
 
 start_time = time.time()
-outputs = llm.generate(prompts, sampling_params)
+outputs = inference_API(prompts, args)
 inference_time = time.time() - start_time
 print(f"Inference time: {inference_time:.2f} seconds")
 
-results = [process_output(output.outputs[0].text) for output in outputs]
+results = [process_output(output) for output in outputs]
 
 process_and_save_results(inputs, results, args.output_file)
 print(f"\nSaved result to {args.output_file}")

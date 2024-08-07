@@ -4,17 +4,10 @@
 MODEL_TYPE="google/gemma-2-9b"
 MODEL_NAME=$(basename $MODEL_TYPE)
 MAX_LENGTH=16000
-<<<<<<< HEAD
 NUM_GPUS=8
 OUTPUT_DIR="./results"
 OUTPUT_FILE="${OUTPUT_DIR}/${MODEL_NAME}_maxlen${MAX_LENGTH}.json"
 export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
-=======
-NUM_GPUS=4
-OUTPUT_DIR="./results"
-OUTPUT_FILE="${OUTPUT_DIR}/${MODEL_NAME}_maxlen${MAX_LENGTH}.json"
-export CUDA_VISIBLE_DEVICES=2,3,4,7
->>>>>>> 66ef726 (123)
 # 确保输出目录存在
 
 

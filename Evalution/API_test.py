@@ -34,16 +34,14 @@ def main():
         return
 
     client = Together(api_key=api_key)
-    input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/prompts_weekly_diary.json'
-    inputs = load_inputs(input_file)
-    
+
     results = []
     for input_data in inputs:
         print(input_data['prompt'])
         stream = client.chat.completions.create(
             model="meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
             messages=[{"role": "user", "content": input_data['prompt']}],
-            max_tokens=2000,
+            max_tokens=8000,
             temperature=0.7,
             top_p=0.7,
             top_k=50,
@@ -58,8 +56,8 @@ def main():
             print(content, end="", flush=True)
             output += content
 
-        output_blocks = process_output(output)
-        results.append(output_blocks)
+        
+        results.append(output)
     
     output_file = 'results.json'
     process_and_save_results(inputs, results, output_file)
