@@ -11,6 +11,8 @@ def parse_args():
     parser.add_argument('--max_length', type=int, default=8000, help='Maximum length of generation.')
     parser.add_argument('--gpu', type=int, default=1, help='Number of GPUs to use.')
     parser.add_argument('--output_file', type=str, required=True, help='Output file path.')
+    parser.add_argument('--input_file', type=str, required=True, help='input file path.')
+  
     args = parser.parse_args()
     return args
 
@@ -56,10 +58,11 @@ def process_and_save_results(inputs: list, results: list, filename: str) -> None
 
 args = parse_args()
 
-input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset.json'
+input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_short.json'
 inputs = load_inputs(input_file)
 
-sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42, repetition_penalty = 1.2)
+#sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42, repetition_penalty = 1.05)
+sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42)
 
 prompts = [input_data['prompt'] for input_data in inputs]
 
