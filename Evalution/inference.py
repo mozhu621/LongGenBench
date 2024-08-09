@@ -67,7 +67,7 @@ sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.m
 prompts = [input_data['prompt'] for input_data in inputs]
 
 # Setting up the LLM with the specified number of GPUs and model
-llm = LLM(model=args.model, tensor_parallel_size=args.gpu)
+llm = LLM(model=args.model, tensor_parallel_size=args.gpu, gpu_memory_utilization=0.95)
 
 start_time = time.time()
 outputs = llm.generate(prompts, sampling_params)
