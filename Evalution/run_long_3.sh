@@ -11,9 +11,9 @@ MODEL_TYPE="mistralai/Mistral-7B-Instruct-v0.3"
 
 
 MODEL_NAME=$(basename $MODEL_TYPE)
-MAX_LENGTH=16000
-NUM_GPUS=24
-INPUT_DIR="/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_short.json"
+MAX_LENGTH=32000
+NUM_GPUS=4
+INPUT_DIR="/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_long.json"
 OUTPUT_DIR="./results"
 OUTPUT_FILE="${OUTPUT_DIR}/${MODEL_NAME}_maxlen${MAX_LENGTH}.json"
 export CUDA_VISIBLE_DEVICES=2,3,4,5

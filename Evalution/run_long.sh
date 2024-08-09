@@ -13,7 +13,7 @@ MODEL_TYPE="meta-llama/Meta-Llama-3.1-8B-Instruct"
 MODEL_NAME=$(basename $MODEL_TYPE)
 MAX_LENGTH=32000
 NUM_GPUS=4
-INPUT_DIR="./home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_long.json"
+INPUT_DIR="/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_long.json"
 OUTPUT_DIR="./results"
 OUTPUT_FILE="${OUTPUT_DIR}/${MODEL_NAME}_maxlen${MAX_LENGTH}.json"
 export CUDA_VISIBLE_DEVICES=2,3,4,5
@@ -26,5 +26,5 @@ python inference.py --model $MODEL_TYPE --max_length $MAX_LENGTH --gpu $NUM_GPUS
 CSV_PATH="/home/yuhao/THREADING-THE-NEEDLE/Evalution/results/accuracy_results.csv"
 
 # 运行 eval.py
-python eval.py --data $OUTPUT_FILE --csv $CSV_PATH --gpu $NUM_GPUS
+# python eval.py --data $OUTPUT_FILE --csv $CSV_PATH --gpu $NUM_GPUS
 

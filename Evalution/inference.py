@@ -58,11 +58,11 @@ def process_and_save_results(inputs: list, results: list, filename: str) -> None
 
 args = parse_args()
 
-input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_short.json'
-inputs = load_inputs(input_file)
+#input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_short.json'
+inputs = load_inputs(args.input_file)
 
-#sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42, repetition_penalty = 1.05)
-sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42)
+# sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42, repetition_penalty = 1.005)
+sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42, stop = '*** finished')
 
 prompts = [input_data['prompt'] for input_data in inputs]
 

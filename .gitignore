@@ -15,3 +15,10 @@ Evalution/api_test_qwen2_72B.json
 Evalution/results/FILM-7B_maxlen16000.json
 Dataset/Dataset_long.json
 Dataset/Dataset_short.json
+Evalution/run_2.sh
+Evalution/run_2.sh
+Evalution/run_2.sh
+Evalution/check_gpu_4GPU.py
+Evalution/run_2.sh
+Evalution/results/Qwen2-7B-Instruct_maxlen32000.json
+Evalution/results/Mistral-7B-Instruct-v0.3_maxlen32000.json

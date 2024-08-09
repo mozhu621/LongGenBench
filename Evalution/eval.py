@@ -31,7 +31,9 @@ def parse_blocks(output_blocks, type):
         match = re.search(pattern, block)
         if match:
             identifier = int(match.group(1))  # 获取类型后的数字
-            type_to_block[identifier] = block
+            if identifier not in type_to_block or type_to_block[identifier] is None:
+                type_to_block[identifier] = block
+
     return type_to_block
 
 # 生成检查内容的prompt
@@ -41,7 +43,8 @@ def create_prompts(checks, type_to_block):
     for identifier, event_desc in checks.items():
         identifier = int(identifier)  # 确保转换为整数
         if identifier in type_to_block:
-            prompts.append(type_to_block[identifier] + f" Does this description include the {event_desc}? Please answer with 'yes' or 'no' only.")
+            prompt = f"Context: " + type_to_block[identifier] + f"### Instruction: Does this context include the {event_desc}? Please answer with 'yes' or 'no' only."
+            prompts.append(prompt)
             identifiers.append(identifier)
     return prompts, identifiers
 
@@ -119,8 +122,6 @@ for data in datas:
     data['count_range'] = len(ids_range)
     data['count_periodic'] = len(ids_periodic)
 
-    
-    # 计算完成度
     completion_rate += calculate_completion_rate(checks_block, data['number'])
 
 completion_rate /= len(datas)  # 平均完成度
@@ -160,7 +161,13 @@ for data in datas:
 
 # 写回JSON文件
 write_json(args.data, datas)
-
+print("###"*10)
+print(prompts_once)
+print("###"*10)
+print(prompts_range)
+print("###"*10)
+print(prompts_periodic)
+print("###"*10)
 # 保存准确率到CSV文件
 save_accuracy_to_csv(args.csv, model_name, completion_rate, acc_once, acc_range, acc_periodic)
 

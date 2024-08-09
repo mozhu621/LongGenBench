@@ -50,6 +50,7 @@ def main():
     script_to_run_1 = "run.sh"
     script_to_run_2 = "run_2.sh"
     script_to_run_3 = "run_3.sh"
+    script_to_run_3 = "run_4.sh"
     check_interval = 30
     gpu_ids = [0, 1]  # Specify which GPUs to monitor
     
