@@ -160,14 +160,7 @@ for data in datas:
     start_index_periodic += data['count_periodic']
 
 # 写回JSON文件
-write_json(args.data, datas)
-print("###"*10)
-print(prompts_once)
-print("###"*10)
-print(prompts_range)
-print("###"*10)
-print(prompts_periodic)
-print("###"*10)
+
 # 保存准确率到CSV文件
 save_accuracy_to_csv(args.csv, model_name, completion_rate, acc_once, acc_range, acc_periodic)
 

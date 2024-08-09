@@ -62,7 +62,7 @@ args = parse_args()
 inputs = load_inputs(args.input_file)
 
 # sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42, repetition_penalty = 1.005)
-sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42, stop = '*** finished')
+sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=6211027, stop = '*** finished')
 
 prompts = [input_data['prompt'] for input_data in inputs]
 
