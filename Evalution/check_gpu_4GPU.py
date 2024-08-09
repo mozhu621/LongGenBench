@@ -50,16 +50,16 @@ def main():
     # script_to_run_1 = "run_long.sh"
     # script_to_run_2 = "run_long_2.sh"
     # script_to_run_3 = "run_long_3.sh"
-    # script_to_run_1 = "run.sh"
-    # script_to_run_2 = "run_2.sh"
+    script_to_run_1 = "run.sh"
+    script_to_run_2 = "run_2.sh"
     script_to_run_3 = "run_3.sh"
     script_to_run_4 = "run_4.sh"
     check_interval = 30
     gpu_ids = [2,3,4,5]  # Specify which GPUs to monitor
     
     # Sequentially run the scripts on specified GPUs
-    # run_script(script_to_run_1, check_interval, gpu_ids)
-    # run_script(script_to_run_2, check_interval, gpu_ids)
+    run_script(script_to_run_1, check_interval, gpu_ids)
+    run_script(script_to_run_2, check_interval, gpu_ids)
     run_script(script_to_run_3, check_interval, gpu_ids)
     run_script(script_to_run_4, check_interval, gpu_ids)
 if __name__ == "__main__":
