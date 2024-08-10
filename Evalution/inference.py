@@ -18,7 +18,7 @@ def parse_args():
 
 # Process output to split blocks and count words
 def process_output(output: str) -> dict:
-    blocks = output.split('###')
+    blocks = output.split('#*#')
     word_count = len(output.split())
     return {"blocks": blocks, "word_count": word_count}
 
