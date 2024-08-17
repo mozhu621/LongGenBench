@@ -4,19 +4,20 @@
 # MODEL_TYPE="mistralai/Mistral-7B-Instruct-v0.3"
 # MODEL_TYPE="Qwen/Qwen2-7B-Instruct"
 # MODEL_TYPE="meta-llama/Meta-Llama-3.1-8B-Instruct"
-# MODEL_TYPE="google/gemma-2-9b"
-MODEL_TYPE="In2Training/FILM-7B"
+#MODEL_TYPE="google/gemma-2-9b"
+# MODEL_TYPE="In2Training/FILM-7B"
 # export VLLM_ATTENTION_BACKEND=FLASHINFER
-
+# MODEL_TYPE="THUDM/glm-4-9b-chat-1m"
+MODEL_TYPE="togethercomputer/Llama-2-7B-32K-Instruct"
 
 
 MODEL_NAME=$(basename $MODEL_TYPE)
 MAX_LENGTH=16000
-NUM_GPUS=4
+NUM_GPUS=2 
 INPUT_DIR="/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_short.json"
 OUTPUT_DIR="./results"
 OUTPUT_FILE="${OUTPUT_DIR}/${MODEL_NAME}_maxlen${MAX_LENGTH}.json"
-export CUDA_VISIBLE_DEVICES=2,3,4,5
+export CUDA_VISIBLE_DEVICES=0,1
 # 确保输出目录存在
 
 

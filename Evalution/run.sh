@@ -7,7 +7,7 @@ MODEL_TYPE="meta-llama/Meta-Llama-3.1-8B-Instruct"
 # MODEL_TYPE="google/gemma-2-9b"
 # MODEL_TYPE="In2Training/FILM-7B"
 # export VLLM_ATTENTION_BACKEND=FLASHINFER
-
+# MODEL_TYPE=THUDM/glm-4-9b-chat-1m
 
 
 MODEL_NAME=$(basename $MODEL_TYPE)

@@ -12,11 +12,11 @@ MODEL_TYPE="mistralai/Mistral-7B-Instruct-v0.3"
 
 MODEL_NAME=$(basename $MODEL_TYPE)
 MAX_LENGTH=32000
-NUM_GPUS=4
+NUM_GPUS=2
 INPUT_DIR="/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_long.json"
 OUTPUT_DIR="./results"
 OUTPUT_FILE="${OUTPUT_DIR}/${MODEL_NAME}_maxlen${MAX_LENGTH}.json"
-export CUDA_VISIBLE_DEVICES=2,3,4,5
+export CUDA_VISIBLE_DEVICES=0,1
 # 确保输出目录存在
 
 

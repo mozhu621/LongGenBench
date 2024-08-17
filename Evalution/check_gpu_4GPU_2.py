@@ -64,6 +64,7 @@ def main():
     
     # Sequentially run the scripts on specified GPUs
     run_script(script_to_run_1, check_interval, gpu_ids)
-    #run_script(script_to_run_4, check_interval, gpu_ids)
+    run_script(script_to_run_2, check_interval, gpu_ids)
+    run_script(script_to_run_3, check_interval, gpu_ids)
 if __name__ == "__main__":
     main()

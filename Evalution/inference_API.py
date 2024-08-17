@@ -5,7 +5,8 @@ import json
 import torch
 import os
 from together import Together
-
+# meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo
+# python inference_API.py --model modeltogethercomputer/Llama-2-7B-32K-Instruct --max_length 32000 --output_file Llama-3.1-70B-Instruct-Turbo_max_length_short.json
 def parse_args():
     parser = argparse.ArgumentParser(description='Run LLM with command line arguments.')
     parser.add_argument('--model', type=str, required=True, help='Model type to use.')
@@ -74,8 +75,8 @@ def inference_API(inputs, args):
             model=args.model,
             messages=[{"role": "user", "content": input_data}],
             max_tokens=args.max_length,
-            temperature=0.7,
-            top_p=0.7,
+            temperature=0.95,
+            top_p=0.95,
             top_k=50,
             repetition_penalty=1,
             stop=["<|eot_id|>"],
@@ -85,7 +86,7 @@ def inference_API(inputs, args):
         output = ""
         for chunk in stream:
             content = chunk.choices[0].delta.content or ""
-            print(content, end="", flush=True)
+            #print(content, end="", flush=True)
             output += content
         
         results.append(output)
@@ -93,7 +94,7 @@ def inference_API(inputs, args):
 
 args = parse_args()
 
-input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset.json'
+input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_short.json'
 inputs = load_inputs(input_file)
 
 prompts = [input_data['prompt'] for input_data in inputs]
