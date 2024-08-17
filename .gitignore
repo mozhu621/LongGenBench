@@ -22,5 +22,5 @@ Evalution/check_gpu_4GPU.py
 Evalution/run_2.sh
 Evalution/results/Qwen2-7B-Instruct_maxlen32000.json
 Evalution/results/Mistral-7B-Instruct-v0.3_maxlen32000.json
-Evalution/api_test_short_qwen.json
-Evalution/Run_short_all_small_model_test.sh
+Evalution/results/Meta-Llama-3.1-8B-Instruct_maxlen32000.json
+Evalution/results/accuracy_results.csv
