@@ -60,7 +60,7 @@ args = parse_args()
 
 #input_file = '/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_short.json'
 inputs = load_inputs(args.input_file)
-prefix = inputs[1]['prefix']
+
 # sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=42, repetition_penalty = 1.005)
 sampling_params = SamplingParams(temperature=0.95, top_p=0.95, max_tokens=args.max_length, seed=6211027, stop = '*** finished')
 
@@ -74,7 +74,7 @@ outputs = llm.generate(prompts, sampling_params)
 inference_time = time.time() - start_time
 print(f"Inference time: {inference_time:.2f} seconds")
 
-results = [process_output(prefix + output.outputs[0].text) for output in outputs]
+results = [process_output( input['prefix']+ output.outputs[0].text) for output, input in zip(outputs,inputs)]
 
 process_and_save_results(inputs, results, args.output_file)
 print(f"\nSaved result to {args.output_file}")
