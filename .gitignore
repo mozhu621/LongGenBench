@@ -30,3 +30,6 @@ Evalution/From-Fragment-to-Fabric-Long-Context-Scaling-with-Short-Instruction-Tu
 Evalution/results/accuracy_results.csv
 Evalution/results/Mistral-7B-Instruct-v0.2_maxlen16000.json
 Evalution/results/accuracy_results.csv
+Evalution/From-Fragment-to-Fabric-Long-Context-Scaling-with-Short-Instruction-Tuning-Data
+Evalution/results/Mistral-7B-Instruct-v0.2_maxlen32000.json
+Evalution/results/accuracy_results.csv
