@@ -59,3 +59,11 @@ OUTPUT_FILE="${OUTPUT_DIR}/${MODEL_NAME}_maxlen${MAX_LENGTH}.json"
 python inference.py --model $MODEL_TYPE --max_length $MAX_LENGTH --gpu $NUM_GPUS  --input_file $INPUT_DIR  --output_file $OUTPUT_FILE 
 # 运行 eval.py
 python eval.py --data $OUTPUT_FILE --csv $CSV_PATH --gpu $NUM_GPUS
+
+
+MODEL_TYPE="THUDM/LongWriter-llama3.1-8b"
+MODEL_NAME=$(basename $MODEL_TYPE)
+OUTPUT_FILE="${OUTPUT_DIR}/${MODEL_NAME}_maxlen${MAX_LENGTH}.json"
+python inference.py --model $MODEL_TYPE --max_length $MAX_LENGTH --gpu $NUM_GPUS  --input_file $INPUT_DIR  --output_file $OUTPUT_FILE 
+# 运行 eval.py
+python eval.py --data $OUTPUT_FILE --csv $CSV_PATH --gpu $NUM_GPUS
