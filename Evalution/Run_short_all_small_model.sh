@@ -24,7 +24,7 @@ CSV_PATH="/home/yuhao/THREADING-THE-NEEDLE/Evalution/results/accuracy_results.cs
 # 运行 eval.py
 python eval.py --data $OUTPUT_FILE --csv $CSV_PATH --gpu $NUM_GPUS
 
-
+$
 
 MODEL_TYPE="Qwen/Qwen2-7B-Instruct"
 MODEL_NAME=$(basename $MODEL_TYPE)

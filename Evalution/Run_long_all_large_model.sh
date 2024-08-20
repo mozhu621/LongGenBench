@@ -11,7 +11,7 @@ MODEL_TYPE="Qwen/Qwen2-72B-Instruct"
 
 MODEL_TYPE="Qwen/Qwen2-72B-Instruct"
 MODEL_NAME=$(basename $MODEL_TYPE)
-MAX_LENGTH=16000
+MAX_LENGTH=32000
 NUM_GPUS=8
 INPUT_DIR="/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_long.json"
 OUTPUT_DIR="./results"
