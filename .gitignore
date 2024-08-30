@@ -39,3 +39,10 @@ Evalution/results/Qwen2-7B_maxlen16000.json
 Draw/instruct_2.pdf
 Evalution/results/FILM-7B_maxlen32000.json
 Evalution/results/LongWriter-llama3.1-8b_maxlen16000.json
+Evalution/results/LongWriter-llama3.1-8b_maxlen32000.json
+Evalution/results/Meta-Llama-3.1-70B-Instruct_maxlen16000.json
+Evalution/results/Meta-Llama-3.1-70B-Instruct_maxlen32000.json
+Evalution/results/Mixtral-8x7B-Instruct-v0.1_maxlen16000.json
+Evalution/results/Mixtral-8x7B-Instruct-v0.1_maxlen32000.json
+Evalution/results/Qwen2-72B-Instruct_maxlen16000.json
+Evalution/results/Qwen2-72B-Instruct_maxlen32000.json
