@@ -37,3 +37,5 @@ Evalution/results/Meta-Llama-3.1-8B_maxlen16000.json
 Evalution/results/Mistral-7B-v0.3_maxlen16000.json
 Evalution/results/Qwen2-7B_maxlen16000.json
 Draw/instruct_2.pdf
+Evalution/results/FILM-7B_maxlen32000.json
+Evalution/results/LongWriter-llama3.1-8b_maxlen16000.json

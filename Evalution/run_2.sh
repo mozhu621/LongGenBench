@@ -2,10 +2,10 @@
 
 # 定义 inference.py 需要的参数
 # MODEL_TYPE="mistralai/Mistral-7B-Instruct-v0.3"
-MODEL_TYPE="THUDM/glm-4-9b-chat-1m"
+# MODEL_TYPE="THUDM/LongWriter-llama3.1-8b"
 # MODEL_TYPE="meta-llama/Meta-Llama-3.1-8B-Instruct"
 # MODEL_TYPE="google/gemma-2-9b"
-# MODEL_TYPE="In2Training/FILM-7B"
+MODEL_TYPE="In2Training/FILM-7B"
 # export VLLM_ATTENTION_BACKEND=FLASHINFER
 
 
