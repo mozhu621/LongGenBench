@@ -8,7 +8,7 @@
 # MODEL_TYPE="In2Training/FILM-7B"
 # export VLLM_ATTENTION_BACKEND=FLASHINFER
 # MODEL_TYPE="THUDM/glm-4-9b-chat-1m"
-MODEL_TYPE="togethercomputer/Llama-2-7B-32K-Instruct"
+# MODEL_TYPE="togethercomputer/Llama-2-7B-32K-Instruct"
 
 
 MODEL_NAME=$(basename $MODEL_TYPE)
@@ -16,8 +16,8 @@ MAX_LENGTH=16000
 NUM_GPUS=2 
 INPUT_DIR="/home/yuhao/THREADING-THE-NEEDLE/Dataset/Dataset_short.json"
 OUTPUT_DIR="./results"
-OUTPUT_FILE="/home/yuhao/THREADING-THE-NEEDLE/Evalution/results/Qwen2-72B-Instruct_maxlen32000.json"
-export CUDA_VISIBLE_DEVICES=6,7
+OUTPUT_FILE="/home/yuhao/THREADING-THE-NEEDLE/Evalution/results/GPT_4o_16K.json"
+export CUDA_VISIBLE_DEVICES=0,1
 # 确保输出目录存在
 
 
