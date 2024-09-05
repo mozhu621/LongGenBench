@@ -50,3 +50,13 @@ Dataset/batch_api.jsonl
 Dataset/Dataset_short_API.json
 Evalution/results/GPT_4o_16000.json
 Evalution/results/GPT_4o_mini_16000.json
+Evalution/results/combined_plot.pdf
+Evalution/results/static.ipynb
+output.png
+three.pdf
+Draw/output.png
+Draw/paper.ipynb
+Draw/ruler_sgt.pdf
+Draw/three.pdf
+Evalution/results/static.ipynb
+Evalution/results/stats.csv
