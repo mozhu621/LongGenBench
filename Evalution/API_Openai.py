@@ -46,7 +46,7 @@ def process_and_save_results(inputs, results, filename):
     save_to_json(combined, filename)
 
 def inference_API(prompts, args):
-    openai.api_key = 'sk-Ipwx4rA5gulbqSr8DDpg6F_ECMtF0-VeLdwJFjVAsaT3BlbkFJgz9MsPuGmVW37nSBvYpRwR0gR7_TkWI8YUg6ujpcAA'  # Use your actual API key
+    openai.api_key = ''  # Use your actual API key
     results = []
     print("start")
     for prompt in prompts:
