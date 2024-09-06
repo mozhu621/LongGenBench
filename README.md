@@ -1,4 +1,5 @@
 # Spinning the Golden Thread: Benchmarking Long-Form Generation in Language Models
+![SGT Benchmark Overview](/home/yuhao/THREADING-THE-NEEDLE/Fig/SGT.jpg)
 
 This repository provides the code and data for the paper **"Spinning the Golden Thread: Benchmarking Long-Form Generation in Language Models"**.
 
