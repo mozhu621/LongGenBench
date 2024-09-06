@@ -1,10 +1,10 @@
 # Spinning the Golden Thread: Benchmarking Long-Form Generation in Language Models
 
-<div style="display: flex; justify-content: center; align-items: center;">
+<!-- <div style="display: flex; justify-content: center; align-items: center;">
     <img src="Fig/SGT.jpg" width="500" height="500">
-</div>
+</div> -->
 
-
+![SGT Benchmark Overview](Fig/SGT.jpg)
 This repository provides the code and data for the paper **"Spinning the Golden Thread: Benchmarking Long-Form Generation in Language Models"**.
 
 ## Overview
