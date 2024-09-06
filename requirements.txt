@@ -1,0 +1,6 @@
+numpy==2.1.1
+openai==1.43.1
+pandas==2.2.2
+together==1.2.11
+torch==2.4.0
+vllm==0.5.4
