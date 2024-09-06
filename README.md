@@ -1,8 +1,9 @@
 # Spinning the Golden Thread: Benchmarking Long-Form Generation in Language Models
 
-<div style="text-align: center;">
-    <img src="Fig/SGT.jpg" width="400" height="400">
+<div style="display: flex; justify-content: center; align-items: center;">
+    <img src="Fig/SGT.jpg" width="500" height="500">
 </div>
+
 
 This repository provides the code and data for the paper **"Spinning the Golden Thread: Benchmarking Long-Form Generation in Language Models"**.
 
@@ -11,6 +12,7 @@ The **Spinning the Golden Thread (SGT)** benchmark is designed to assess the lon
 
 ## Benchmark Design 
 ![SGT Benchmark Overview](Fig/SGT_overview.png)
+
 The benchmark evaluates 10 long-context LMs over a series of four scenarios with multiple sub-scenarios, each varying by the type of prompt instructions—single instance, range, and periodicity. These scenarios simulate real-world tasks such as urban planning, diary entries, or menu planning, where the LM must incorporate specific events, details, or constraints into a long-form text sequence.
 
 ## Evaluation Focus
