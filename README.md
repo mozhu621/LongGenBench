@@ -1,4 +1,4 @@
-# Spinning the Golden Thread: Benchmarking Long-Form Generation in Language Models
+# LongGenBench: Benchmarking Long-Form Generation in Language Models
 
 <p align="center">
   <img src="Fig/SGT.jpg" width="500" height="500">
@@ -6,10 +6,10 @@
 
 
 <!-- ![SGT Benchmark Overview](Fig/SGT.jpg) -->
-This repository provides the code and data for the paper **"Spinning the Golden Thread: Benchmarking Long-Form Generation in Language Models"**.
+This repository provides the code and data for the paper **"LongGenBench: Benchmarking Long-Form Generation in Language Models"**.
 
 ## Overview
-The **Spinning the Golden Thread (SGT)** benchmark is designed to assess the long-form content generation abilities of language models (LMs) for tasks requiring coherent, long-context outputs. Traditional benchmarks often focus on short-context tasks or specific information retrieval, such as the Needle-in-a-Haystack (NIAH) tests. In contrast, SGT is engineered to probe the abilities of LMs to generate extended text sequences that are coherent and contextually rich, while adhering to detailed prompt instructions involving various constraints.
+The **LongGenBench** benchmark is designed to assess the long-form content generation abilities of language models (LMs) for tasks requiring coherent, long-context outputs. Traditional benchmarks often focus on short-context tasks or specific information retrieval, such as the Needle-in-a-Haystack (NIAH) tests. In contrast, LongGenBench is engineered to probe the abilities of LMs to generate extended text sequences that are coherent and contextually rich, while adhering to detailed prompt instructions involving various constraints.
 
 ## Benchmark Design 
 ![SGT Benchmark Overview](Fig/SGT_overview.png)
