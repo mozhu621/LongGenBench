@@ -52,7 +52,7 @@ def create_prompts(checks, type_to_block):
         identifier = int(identifier)  # 确保转换为整数
         if identifier in type_to_block:
             # 为模型提供指示，让它参考示例
-            prompt = "\n".join(examples) + f" \n ### Refer to the examples above for how to answer. \nContext: " + type_to_block[identifier] f"\n\n### Instruction: Now, for the following context, does it include the {event_desc}? Please answer with 'yes' or 'no' only. Answer: "
+            prompt = "\n".join(examples) + f" \n ### Refer to the examples above for how to answer. \nContext: " + type_to_block[identifier] + f"\n\n### Instruction: Now, for the following context, does it include the {event_desc}? Please answer with 'yes' or 'no' only. Answer: "
             prompts.append(prompt)
             identifiers.append(identifier)
     
